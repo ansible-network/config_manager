@@ -1,0 +1,20 @@
+---
+argument_spec:
+  config_file:
+    description:
+      - Configures either a playbook relative or absolute path to the
+        file containing the device configuration.  This value will be passed
+        to the provider and loaded onto the target device.  This argument is
+        mutually exclusive with `config_text`.
+
+  config_text:
+    description:
+      - Specifies the configuration to be loaded onto the target device.  This
+        argument should be a string value.  It will be based to the provider
+        for loading.  This argument is mutually exclusive with `config_file`
+
+mutually_exclusive:
+  - ['config_file', 'config_text']
+
+required_one_of:
+  - ['config_file', 'config_text']
