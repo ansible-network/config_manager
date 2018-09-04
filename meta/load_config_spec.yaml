@@ -13,6 +13,15 @@ argument_spec:
         argument should be a string value.  It will be based to the provider
         for loading.  This argument is mutually exclusive with `config_file`
 
+  ansible_network_provider:
+    description:
+      - This value is used to determine the correct role to implement the
+        load_config function.  The network device provider role is responsible
+        for performing the actual implementation of the load_config function.
+        The specified role must be installed and accesible via the configured
+        ansible_role_path setting.
+    required: True
+
 mutually_exclusive:
   - ['config_file', 'config_text']
 
