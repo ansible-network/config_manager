@@ -11,4 +11,4 @@
 - name: validate ansible_network_provider is defined
   fail:
     msg: "missing required setting: ansible_network_provider"
-  when: ansible_network_os is undefined
+  when: ansible_network_provider is undefined
