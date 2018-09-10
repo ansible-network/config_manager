@@ -1,0 +1,10 @@
+---
+argument_spec:
+  ansible_network_provider:
+    description:
+      - This value is used to determine the correct role to implement the
+        load_config function.  The network device provider role is responsible
+        for performing the actual implementation of the load_config function.
+        The specified role must be installed and accesible via the configured
+        ansible_role_path setting.
+    required: True

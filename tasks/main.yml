@@ -1,2 +1,23 @@
 ---
 # tasks file for ansible-network.config_manager
+#
+- name: initialize function
+  include_tasks: includes/init.yaml
+
+- name: set role supported functions
+  set_fact:
+    config_manager_functions:
+      - get
+      - load
+      - edit
+      - save
+      - template
+      - noop
+
+- name: validate the requested function is supported
+  fail:
+    msg: "invalid function specified, expected one of {{ config_manager_functions }}, got {{ function }}"
+  when: function | default('noop') not in config_manager_functions
+
+- name: include function specific tasks and run
+  include_tasks: "{{ function  | default('noop') }}.yaml"

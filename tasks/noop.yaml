@@ -1,0 +1,4 @@
+---
+- name: display mesage
+  debug:
+    msg: "role version is {{ ansible_network_eos_version }}"
