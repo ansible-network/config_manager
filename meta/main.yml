@@ -1,6 +1,9 @@
 galaxy_info:
   author: Ansible Network Community (ansible-network)
-  description: Ansible role for managing network device configurations
+  description: |
+    This role is designed to provide a network platform agnostic approach to
+    managing the active (running) configuration file on a remote device.  This
+    role requires one (or more) platform provider roles to execute properly.
   company: Ansible
 
   license: GPLv3
@@ -30,4 +33,6 @@ galaxy_info:
     - network
 
 dependencies:
-  - ansible-network.network-engine
+  - src: https://github.com/ansible-network/network-engine.git
+    version: v2.6.4
+    name: ansible-network.network-engine
