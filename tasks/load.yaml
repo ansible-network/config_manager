@@ -1,7 +1,7 @@
 ---
 - name: validate role spec
   validate_role_spec:
-    spec: load_config_spec.yaml
+    spec: load_spec.yaml
 
 - name: invoke network provider
   include_role:
