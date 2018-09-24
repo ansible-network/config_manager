@@ -3,6 +3,55 @@
   validate_role_spec:
     spec: load_spec.yaml
 
+# check if host vars are stored in scm and if they are get the latest version
+- name: get host vars from scm
+  block:
+    - name: create temp working directory
+      tempfile:
+        state: directory
+      register: config_manager_working_dir
+      changed_when: false
+
+    - name: checkout scm project
+      git:
+        repo: "{{ config_manager_scm_url }}"
+        dest: "{{ config_manager_working_dir.path }}"
+      changed_when: false
+
+    - name: discover the configuration file path and load it
+      set_fact:
+        config_manager_text: "{{ lookup('file', item) }}"
+      with_first_found:
+        - files:
+            - "{{ inventory_hostname_short }}"
+            - "{{ inventory_hostname_short }}.cfg"
+          paths:
+            - "{{ config_manager_working_dir.path }}/{{ ansible_network_os }}"
+            - "{{ config_manager_working_dir.path }}"
+      when: config_manager_scm_file is undefined
+
+    - name: load the configuration text from config_manager_scm_file
+      set_fact:
+        config_manager_text: "{{ lookup('file', config_manager_scm_file }}"
+      when: config_manager_scm_file is defined
+
+    - name: remove temporary working dir
+      file:
+        path: config_manager_working_dir.path
+        state: absent
+      changed_when: false
+  rescue:
+    - name: remove temporary working dir
+      file:
+        path: "{{ config_manager_working_dir.path }}"
+        state: absent
+      changed_when: false
+
+    - name: fail the host
+      fail:
+        msg: "no configuration file found for host"
+  when: config_manager_scm_url is defined
+
 - name: invoke network provider
   include_role:
     name: "{{ ansible_network_provider }}"
