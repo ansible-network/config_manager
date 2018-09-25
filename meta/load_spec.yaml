@@ -13,6 +13,19 @@ argument_spec:
         argument should be a string value.  It will be based to the provider
         for loading.  This argument is mutually exclusive with `config_manager_file`
 
+  config_manager_scm_url:
+    descrption:
+      - Configures a SCM URL to retrieve the host configuration files from.
+        This value will checkout the config file from the SCM system and then
+        search for a valid configuration file that corresponds to the
+        target host based on the value of inventory_hostname_short.
+
+  config_manager_scm_file:
+    description:
+      - This setting overrides the default search path for the configuration
+        filename when using config_manager_scm_url.  The value in for this
+        argument should be relative to the root of the SCM checkout.
+
   config_manager_replace:
     descriptiion:
       - This setting indicates whether or not the provided configuration file
@@ -34,4 +47,4 @@ mutually_exclusive:
   - ['config_manager_file', 'config_manager_text']
 
 required_one_of:
-  - ['config_manager_file', 'config_manager_text']
+  - ['config_manager_file', 'config_manager_text', 'config_manager_scm_url']
