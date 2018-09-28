@@ -9,7 +9,6 @@
     config_manager_functions:
       - get
       - load
-      - edit
       - save
       - noop
 

@@ -44,7 +44,7 @@ argument_spec:
     required: True
 
 mutually_exclusive:
-  - ['config_manager_file', 'config_manager_text']
+  - ['config_manager_file', 'config_manager_text', 'config_manager_scm_url']
 
 required_one_of:
   - ['config_manager_file', 'config_manager_text', 'config_manager_scm_url']
