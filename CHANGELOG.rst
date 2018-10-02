@@ -2,8 +2,19 @@
 config_manager
 ===============================
 
-devel
-=====
+v2.6.1
+======
+
+Major Changes
+-------------
+
+- Adds scm support to allow the role to automatically retrieve
+the device configuration from scm.
+- Move the config file load into config_manager.
+
+
+v2.6.0
+======
 
 New Functions
 -------------
