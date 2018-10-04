@@ -11,6 +11,7 @@
       - load
       - save
       - noop
+      - rescue
 
 - name: validate the requested function is supported
   fail:

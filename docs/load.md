@@ -10,7 +10,7 @@ section for different example of how to push configurations to network devices.
 
 ## How to use this function
 
-The examples below demonstate how to use this function in a playbook.
+The examples below demonstrate how to use this function in a playbook.
 
 ## How to load and merge a configuration
 

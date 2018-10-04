@@ -1,0 +1,31 @@
+---
+argument_spec:
+  ansible_network_provider:
+    description:
+      - This value is used to determine the correct role to implement the
+        load_config function.  The network device provider role is responsible
+        for performing the actual implementation of the load_config function.
+        The specified role must be installed and accesible via the configured
+        ansible_role_path setting.
+    required: True
+
+  config_manager_set_rescue:
+    descriptiion:
+      - This setting indicates whether or not the to set the current running
+        configuration as the rescue configuration.
+    type: bool
+    default: False
+
+  config_manager_delete_rescue:
+    descriptiion:
+      - This setting indicates whether or not the to delete the rescue configuration
+        checkpoint that is already set.
+    type: bool
+    default: False
+
+  config_manager_load_rescue_config:
+    descriptiion:
+      - This setting indicates whether or not to replace the current configuration
+        with the rescue configuration.
+    type: bool
+    default: False

@@ -17,6 +17,7 @@ in this role.
 * get [[source]](https://github.com/ansible-network/config_manager/blob/devel/tasks/get.yaml) [[docs]](https://github.com/ansible-network/config_manager/blob/devel/docs/get.md)
 * load [[source]](https://github.com/ansible-network/config_manager/blob/devel/tasks/load.yaml) [[docs]](https://github.com/ansible-network/config_manager/blob/devel/docs/load.md)
 * save [[source]](https://github.com/ansible-network/config_manager/blob/devel/tasks/save.yaml) [[docs]](https://github.com/ansible-network/config_manager/blob/devel/docs/save.md)
+* rescue [[source]](https://github.com/ansible-network/config_manager/blob/devel/tasks/rescue.yaml) [[docs]](https://github.com/ansible-network/config_manager/blob/devel/docs/rescue.md)
 
 ## License
 
