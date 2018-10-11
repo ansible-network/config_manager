@@ -8,7 +8,7 @@ accessed via `config_manager.config` fact.
 
 ## How to use this function
 
-The examples below demonstate how to use this function in a playbook.
+The examples below demonstrate how to use this function in a playbook.
 
 ### How to get the device configuration
 
@@ -20,7 +20,7 @@ Below is an example of calling the `get` function from the playbook.
 ```
 ---
 - hosts: network
-
+  gather_facts: false
   roles:
     - name ansible-network.config_manager
       function: get
@@ -32,13 +32,14 @@ each device in the inventory group `network`.
 
 ### How to get the device configuration from tasks
 
-The `get` function can also be inlcudes in the playbook `Tasks:` section and
+The `get` function can also be includes in the playbook `Tasks:` section and
 executed as part of the list of tasks.  Below is an example of how to retrieve
 the configuration using tasks.
 
 ```
 ---
 - hosts: network
+  gather_facts: false
 
   tasks:
     - name: get active configuration from device
@@ -46,13 +47,13 @@ the configuration using tasks.
         name: ansible-network.config_manager
         tasks_from: get
 
-    - name: display the device configation to stdout
+    - name: display the device configuration to stdout
       debug:
         var: config_manager.config.split('\n')
 ```
 
 The example playbook above will retrieve the current running configuration and
-then display the configration contents to stdout.
+then display the configuration contents to stdout.
 
 ## Arguments
 

@@ -15,7 +15,7 @@ The examples below demonstate how to use this function in a playbook.
 ## How to load and merge a configuration
 
 Loading a configuration onto a target device is fairly simple and
-straightforward.  By default, the `load` function will merge the contents of 
+straightforward.  By default, the `load` function will merge the contents of
 the provided configuration file with the configuration running on
 the target device.  
 
@@ -23,7 +23,8 @@ Below is an example of how to call the `load` function.
 
 ```
 - hosts: network
-  
+  gather_facts: false
+
   roles:
     - name: ansible-network.config_manager
       function: load
@@ -42,7 +43,8 @@ configuration, set the `config_manager_replace` value to True.
 
 ```
 - hosts: network
-  
+  gather_facts: false
+
   roles:
     - name: ansible-network.config_manager
       function: load
