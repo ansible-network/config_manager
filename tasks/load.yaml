@@ -22,14 +22,13 @@
 
     - name: discover the configuration file path and load it
       set_fact:
-        config_manager_file: "{{ item }}"
-      with_first_found:
-        - files:
-            - "{{ inventory_hostname_short }}"
-            - "{{ inventory_hostname_short }}.cfg"
-          paths:
-            - "{{ config_manager_working_dir.path }}/{{ ansible_network_os }}"
-            - "{{ config_manager_working_dir.path }}"
+        config_manager_file: "{{ lookup('first_found', search_path) }}"
+      vars:
+        search_path:
+          - "{{ config_manager_working_dir.path }}/{{ ansible_network_os }}/{{ inventory_hostname_short }}"
+          - "{{ config_manager_working_dir.path }}/{{ ansible_network_os }}/{{ inventory_hostname_short }}.cfg"
+          - "{{ config_manager_working_dir.path }}/{{ inventory_hostname_short }}"
+          - "{{ config_manager_working_dir.path }}/{{ inventory_hostname_short }}.cfg"
       when: config_manager_scm_file is undefined
 
     - name: set the config_manager_file value based on config_manager_scm_file
