@@ -49,7 +49,7 @@ the configuration using tasks.
 
     - name: display the device configuration to stdout
       debug:
-        var: config_manager.config.split('\n')
+        msg: "{{ configuration.split('\n') }}"
 ```
 
 The example playbook above will retrieve the current running configuration and
