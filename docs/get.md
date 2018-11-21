@@ -20,9 +20,10 @@ Below is an example of calling the `get` function from the playbook.
 ```
 ---
 - hosts: network
+  connection: network_cli
   gather_facts: false
   roles:
-    - name ansible-network.config_manager
+    - name: ansible-network.config_manager
       function: get
 
 ```
