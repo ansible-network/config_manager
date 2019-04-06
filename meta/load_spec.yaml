@@ -6,12 +6,20 @@ argument_spec:
         file containing the device configuration.  This value will be passed
         to the provider and loaded onto the target device.  This argument is
         mutually exclusive with `config_manager_text`.
+  
+  config_manager_templates:
+    description:
+      - Specifies templates to be loaded onto the target device.  This
+        argument should be a list.  It will be passed to the provider
+        for loading.  This argument is mutually exclusive with `config_manager_file`
+        and `config_manager_text`.
 
   config_manager_text:
     description:
       - Specifies the configuration to be loaded onto the target device.  This
         argument should be a string value.  It will be based to the provider
         for loading.  This argument is mutually exclusive with `config_manager_file`
+        and `config_manager_templates`.
 
   config_manager_scm_url:
     descrption:
@@ -44,7 +52,7 @@ argument_spec:
     required: True
 
 mutually_exclusive:
-  - ['config_manager_file', 'config_manager_text', 'config_manager_scm_url']
+  - ['config_manager_file', 'config_manager_templates', 'config_manager_text', 'config_manager_scm_url']
 
 required_one_of:
-  - ['config_manager_file', 'config_manager_text', 'config_manager_scm_url']
+  - ['config_manager_file', 'config_manager_templates', 'config_manager_text', 'config_manager_scm_url']

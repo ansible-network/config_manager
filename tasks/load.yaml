@@ -61,12 +61,12 @@
     config_manager_text: "{{ lookup('config_template', config_manager_file) | join('\n') }}"
   when: config_manager_file is defined
 
-# validate at this point that config_manager_text is set othewise fail
-# the host.
-- name: validate config_manager_text is defined
+# validate at this point that either config_manager_text or config_manager_templates is set,
+# othewise fail the host.
+- name: validate config_manager_text or config_manager_templates is defined
   fail:
-    msg: "missing required arg: config_manager_text"
-  when: config_manager_text is undefined
+    msg: "missing required arg: config_manager_text or config_manager_templates"
+  when: config_manager_text is undefined and config_manager_templates is undefined
 
 - name: invoke network provider
   include_role:
